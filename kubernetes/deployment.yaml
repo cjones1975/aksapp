@@ -4,7 +4,7 @@ metadata:
   name: aksapp
   namespace: default
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: aksapp
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: aksapp
-        image: digihubcr.azurecr.io/aksapp/aksapp:1.0.0
+        image: digihubcr.azurecr.io/aksapp
         resources:
           limits:
             memory: "128Mi"

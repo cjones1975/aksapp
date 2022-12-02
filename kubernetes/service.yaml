@@ -4,6 +4,7 @@ metadata:
   name: aksapp-service
   namespace: default
 spec:
+  type: LoadBalancer
   selector:
     app: aksapp
   ports:
