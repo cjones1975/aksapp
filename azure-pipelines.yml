@@ -20,7 +20,7 @@ stages:
     - task: Docker@2
       inputs:
         containerRegistry: 'digihub-container'
-        repository: '$imageRepo'
+        repository: '$(imageRepo)'
         command: 'buildAndPush'
         Dockerfile: '$(Build.SourcesDirectory)/dockerfile'
         tags: |
