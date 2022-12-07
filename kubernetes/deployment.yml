@@ -4,7 +4,7 @@ metadata:
   name: aksapp
   namespace: default
 spec:
-  replicas: #{replicaNumber}#
+  replicas: #replicaNumber#
   selector:
     matchLabels:
       app: aksapp
