@@ -36,9 +36,10 @@ stages:
   dependsOn: Build
   variables:
     acrdevurl: 'digihubcr.azurecr.io'
+    replicateNumber: 3
   jobs:
     - deployment: Deploy
-      displayName: Deploy to AKS
+      displayName: Deploy to Azure Kubernetes Service
       environment: 'k8sdev.default'
       pool:
         vmImage: ubuntu-latest
@@ -51,6 +52,21 @@ stages:
                 buildType: 'current'
                 artifactName: 'manifests'
                 targetPath: '$(Pipeline.Workspace)/manifests'
+            - task: replacetokens@5
+              displayName: Replace Tokens
+              inputs:
+                rootDirectory: '$(Pipeline.Workspace)/manifests/'
+                targetFiles: 'deployment.yml'
+                encoding: 'auto'
+                tokenPattern: 'default'
+                writeBOM: true
+                actionOnMissing: 'warn'
+                keepToken: false
+                actionOnNoFiles: 'continue'
+                enableTransforms: false
+                enableRecursion: false
+                useLegacyPattern: false
+                enableTelemetry: true
             - task: KubernetesManifest@0
               inputs:
                 action: 'deploy'
