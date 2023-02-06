@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { testService } from 'src/app/services/test.service';
+import { authService } from 'src/app/services/auth/auth.service';
+
 
 @Component({
   selector: 'app-home',
@@ -8,20 +9,25 @@ import { testService } from 'src/app/services/test.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private testService: testService) { }
+
+  constructor(
+    private authService: authService
+  ) { }
 
   ngOnInit(): void {
-    this.doTest()
+    this.authService.msalSubject$Event();
+
+    this.authService.msalProgress$Event();
   }
 
-  public doTest() {
-    try {
-      this.testService.getTest().subscribe((res) => {
-        console.log(res);
-      });
-    } catch (err: any) {
-      console.log(`Error message is ${err.message}`);
-    }
-  }
+  // public doTest() {
+  //   try {
+  //     this.testService.getTest().subscribe((res) => {
+  //       console.log(res);
+  //     });
+  //   } catch (err: any) {
+  //     console.log(`Error message is ${err.message}`);
+  //   }
+  // }
 
 }
