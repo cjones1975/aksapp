@@ -45,9 +45,9 @@ export const msalConfig: Configuration = {
 }
 
 export const protectedResources = {
-    todoListApi: {
-        endpoint: "http://localhost:5000/api/v1/todolist",
-        scopes: ["https://digihubb2c.b2clogin.com/digihubB2C.onmicrosoft.com/api/tasks.read"],
+    referentialApi: {
+        endpoint: "http://20.23.179.197/api/v1/referential/getCountries",
+        scopes: ["https://digihubB2C.onmicrosoft.com/api/referential.read"],
     }
 }
 

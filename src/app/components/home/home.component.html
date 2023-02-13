@@ -1,1 +1,20 @@
-<p>home works!</p>
+<div class="container">
+  <h3 class="mt-4">ID token claims:</h3>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Claim</th>
+        <th>Value</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of dataSource">
+        <td>{{ data.claim }}</td>
+        <td>{{ data.value }}</td>
+        <td>{{ data.description }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
